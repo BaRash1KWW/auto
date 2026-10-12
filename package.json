@@ -1,0 +1,20 @@
+{
+  "name": "autosalon-web",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Веб-система автосалона на Node.js с SQLite и Microsoft SQL Server",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test",
+    "check": "node --check server.js && node --check src/database.js && node --check src/database-mssql.js && node --check src/entities.js && node --check src/entities-mssql.js && node --check src/server-mssql.js && node --check tests/app.test.js && node --check tests/mssql-server.test.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "mssql": "^12.7.2"
+  },
+  "engines": {
+    "node": ">=22.5"
+  }
+}

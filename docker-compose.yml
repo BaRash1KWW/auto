@@ -1,0 +1,21 @@
+services:
+  autosalon:
+    build: .
+    image: autosalon-web:local
+    container_name: autosalon-web
+    ports:
+      - "5000:5000"
+    environment:
+      NODE_ENV: production
+      DB_CLIENT: mssql
+      PORT: "5000"
+      HOST: 0.0.0.0
+      MSSQL_AUTH: sql
+      MSSQL_SERVER: ${MSSQL_DOCKER_SERVER:-host.docker.internal}
+      MSSQL_PORT: ${MSSQL_DOCKER_PORT:-1433}
+      MSSQL_DATABASE: ${MSSQL_DATABASE:-AutoSalonDB}
+      MSSQL_USER: ${MSSQL_USER:?Add MSSQL_USER to .env for the Docker SQL login}
+      MSSQL_PASSWORD: ${MSSQL_PASSWORD:?Add MSSQL_PASSWORD to .env for the Docker SQL login}
+      MSSQL_ENCRYPT: ${MSSQL_ENCRYPT:-false}
+      MSSQL_TRUST_SERVER_CERTIFICATE: ${MSSQL_TRUST_SERVER_CERTIFICATE:-true}
+    restart: unless-stopped
